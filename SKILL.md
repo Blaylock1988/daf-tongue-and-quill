@@ -67,6 +67,7 @@ Confirm these six items with the user **before** drafting:
 - **Build Briefing Slides:** `python scripts/build_slides.py {build|template|schema} ...`
 - **Validate / Extract (`.txt`, `.md`, `.docx`, `.pptx`):** `python scripts/validate_doc.py <file> [--type ...] [--dept auto|dow|dod] [--strict] [--dump-text]` (or `scripts/validate_memo.py`)
 - **Import Command Writing Guide:** `python scripts/import_acronyms.py <guide.pdf|.docx|.csv|.txt> --out local_acronyms.json [--mode strict|additive]`
+- **Check / Sync AFPC Baseline:** `python scripts/import_acronyms.py --check-afpc` (or `--sync-afpc`; use `--from-file <saved.html|.pdf>` if `afpc.af.mil` returns HTTP 403 to direct requests)
 - **Zero-Bloat Lookup:** `python scripts/tq_lookup.py {--rank|--address|--acronym|--abbrev|--wordy|--fallacy|--cui} <query>`
 
 ## 5. Final Verification Checklist

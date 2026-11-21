@@ -1,11 +1,15 @@
 """Tests for scripts/import_acronyms.py."""
 from __future__ import annotations
 
+import io
 import json
 import sys
 import tempfile
 import unittest
+import urllib.error
+from contextlib import redirect_stdout
 from pathlib import Path
+from unittest.mock import patch
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
@@ -79,6 +83,88 @@ class TestImportAcronyms(unittest.TestCase):
             written = json.loads(out_path.read_text(encoding="utf-8"))
             self.assertEqual(written["acronyms"]["SSC"], ["Space Systems Command"])
             self.assertEqual(written["acronyms"]["SBD"], ["Space Base Delta"])
+
+    def test_check_afpc_from_html_reports_diff_and_clean_status(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            html_new = Path(tmp) / "afpc_new.html"
+            html_new.write_text(
+                "<html><body>"
+                "<p>Updated: 15 Dec 2026</p>"
+                "<table>"
+                "<tr><th>Acronym</th><th>Definition</th></tr>"
+                "<tr><td>ABM</td><td>Air Battle Manager</td></tr>"
+                "<tr><td>ACE</td><td>Agile Combat Employment</td></tr>"
+                "<tr><td>ACE</td><td>Airspace Control Element</td></tr>"
+                "<tr><td>ZETA9</td><td>Zero Emission Tactical Aircraft</td></tr>"
+                "</table></body></html>",
+                encoding="utf-8",
+            )
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                rc = import_acronyms.main(
+                    ["--check-afpc", "--from-file", str(html_new), "--json"]
+                )
+            self.assertEqual(rc, 2)
+            diff = json.loads(buf.getvalue())
+            self.assertTrue(diff["has_changes"])
+            self.assertEqual(diff["detected_date"], "15 Dec 2026")
+            self.assertIn("ZETA9", diff["added"])
+            self.assertEqual(diff["new_meanings"]["ACE"], ["Airspace Control Element"])
+
+            html_same = Path(tmp) / "afpc_same.html"
+            html_same.write_text(
+                "<html><body><table>"
+                "<tr><td>ABM</td><td>Air Battle Manager</td></tr>"
+                "<tr><td>ACE</td><td>Agile Combat Employment</td></tr>"
+                "</table></body></html>",
+                encoding="utf-8",
+            )
+            buf2 = io.StringIO()
+            with redirect_stdout(buf2):
+                rc2 = import_acronyms.main(
+                    ["--check-afpc", "--from-file", str(html_same), "--json"]
+                )
+            self.assertEqual(rc2, 0)
+            self.assertFalse(json.loads(buf2.getvalue())["has_changes"])
+
+    def test_sync_afpc_from_html_preserves_metadata_and_sets_last_synced(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            html_path = Path(tmp) / "afpc_update.html"
+            html_path.write_text(
+                "<html><body>"
+                "<p>Effective 20 Jan 2027</p>"
+                "<table><tr><td>XRAY</td><td>Extended Range Array</td></tr></table>"
+                "</body></html>",
+                encoding="utf-8",
+            )
+            out_json = Path(tmp) / "afpc_synced.json"
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                rc = import_acronyms.main(
+                    ["--sync-afpc", "--from-file", str(html_path), "--out", str(out_json)]
+                )
+            self.assertEqual(rc, 0)
+            synced = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertIn("XRAY", synced["acronyms"])
+            self.assertEqual(synced["detected_source_date"], "20 Jan 2027")
+            self.assertTrue(synced["last_synced"])
+            self.assertIn("principles", synced)
+            self.assertIn("categories", synced)
+            self.assertIn("abbreviations", synced)
+            self.assertIn("multi_meaning_collisions", synced)
+
+    def test_check_afpc_http_403_exits_3_with_from_file_guidance(self) -> None:
+        err = urllib.error.HTTPError(
+            import_acronyms.AFPC_URL, 403, "Forbidden", hdrs=None, fp=None
+        )
+        buf = io.StringIO()
+        try:
+            with patch("urllib.request.urlopen", side_effect=err), redirect_stdout(buf):
+                rc = import_acronyms.main(["--check-afpc"])
+        finally:
+            err.close()
+        self.assertEqual(rc, 3)
+        self.assertIn("--from-file", buf.getvalue())
 
 
 if __name__ == "__main__":

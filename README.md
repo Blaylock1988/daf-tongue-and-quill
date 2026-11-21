@@ -44,6 +44,7 @@ python scripts/validate_doc.py brief.pptx --type slides --dump-text
 
 # 6. Import your MAJCOM / Field Command / Delta acronym writing guide & run unit lookups
 python scripts/import_acronyms.py .\command_guide.pdf --out local_acronyms.json --mode strict
+python scripts/import_acronyms.py --check-afpc   # or --sync-afpc (use --from-file saved.html if AFPC returns HTTP 403)
 python scripts/tq_lookup.py --address "Secretary of War"
 python scripts/tq_lookup.py --acronym OPR
 python scripts/tq_lookup.py --rank Spc3
