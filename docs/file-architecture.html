@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>daf-tongue-and-quill · File Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&family=Noto+Serif:ital@0;1&family=Noto+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@400&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:   #f2f5f8;
+      --color-ink:     #101820;
+      --color-muted:   #00263a;
+      --color-soft:    #56636e;
+      --color-accent:  #00308f;
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', 'Noto Serif', 'Noto Serif KR', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace;
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+    }
+    .frame { max-width: 680px; width: 100%; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      margin-bottom: 0.4rem;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.6rem, 2.5vw + 0.75rem, 2rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-ink);
+      margin-bottom: 1rem;
+    }
+    svg { width: 100%; height: auto; min-width: 640px; display: block; }
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Tree · Repository &amp; Skill File Architecture</p>
+    <h1>daf-tongue&amp;quill-agent directory layout</h1>
+
+    <div class="diagram-container">
+      <svg width="640" height="1332" viewBox="0 0 640 1332" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="daf-tq-tree-v3-title daf-tq-tree-v3-desc">
+        <title id="daf-tq-tree-v3-title">daf-tongue-and-quill Repository File Architecture</title>
+        <desc id="daf-tq-tree-v3-desc">Vertical file tree for the daf-tongue-and-quill skill package listing all 33 tracked files across root files, docs, nine AFH 33-337 reference guides, four JSON datasets including the AFPC acronym baseline, seven Python CLI scripts, templates with optional local seals, and five unit test suites.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#00263a"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#00308f"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2b5f8a"/></marker>
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f2f5f8"/>
+
+        <!-- CONNECTORS (drawn before cards) -->
+        <!-- Main vertical trunk from Root (x=36, y=72) to Branch 6 (tests/, y=1140) -->
+        <path d="M 36,72 V 1132 Q 36,1140 44,1140 H 60" fill="none" stroke="#00263a" stroke-width="1.2"/>
+        <!-- Spurs to Branches 1-5 -->
+        <line x1="36" y1="108" x2="60" y2="108" stroke="#00263a" stroke-width="1.2"/>
+        <line x1="36" y1="276" x2="60" y2="276" stroke="#00263a" stroke-width="1.2"/>
+        <line x1="36" y1="380" x2="60" y2="380" stroke="#00263a" stroke-width="1.2"/>
+        <line x1="36" y1="772" x2="60" y2="772" stroke="#00263a" stroke-width="1.2"/>
+        <line x1="36" y1="984" x2="60" y2="984" stroke="#00263a" stroke-width="1.2"/>
+        <!-- Nested sub-trunk: references/ -> references/data/ -->
+        <path d="M 80,596 V 624 Q 80,632 88,632 H 104" fill="none" stroke="#00263a" stroke-width="1.2"/>
+        <!-- Nested sub-trunk: templates/ -> templates/seals/ (dashed optional) -->
+        <path d="M 80,1028 V 1052 Q 80,1060 88,1060 H 104" fill="none" stroke="#56636e" stroke-width="1" stroke-dasharray="4,3"/>
+
+        <!-- ==================== ROOT NODE (FOCAL) ==================== -->
+        <rect x="16" y="16" width="608" height="56" rx="6" fill="#f2f5f8"/>
+        <rect x="16" y="16" width="608" height="56" rx="6" fill="rgba(0,48,143,0.08)" stroke="#00308f" stroke-width="1.2"/>
+        <rect x="28" y="24" width="44" height="16" rx="2" fill="transparent" stroke="rgba(0,48,143,0.50)" stroke-width="0.8"/>
+        <text x="50" y="35" fill="#00308f" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">ROOT</text>
+        <text x="80" y="38" fill="#101820" font-size="15" font-weight="600" font-family="'Geist', system-ui, sans-serif">daf-tongue&amp;quill-agent/</text>
+        <text x="612" y="37" fill="#00308f" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">33 tracked files</text>
+        <text x="80" y="58" fill="#00263a" font-size="11" font-family="'Geist Mono', ui-monospace, monospace">skill: daf-tongue-and-quill · 100% AFH 33-337 (Ch. 1–28)</text>
+
+        <!-- ==================== BRANCH 1: ROOT FILES ==================== -->
+        <rect x="60" y="88" width="564" height="152" rx="6" fill="#f2f5f8"/>
+        <rect x="60" y="88" width="564" height="152" rx="6" fill="#ffffff" stroke="#101820" stroke-width="1"/>
+        <rect x="72" y="96" width="44" height="16" rx="2" fill="transparent" stroke="rgba(16,24,32,0.40)" stroke-width="0.8"/>
+        <text x="94" y="107" fill="#101820" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">ENTRY</text>
+        <text x="124" y="109" fill="#101820" font-size="14" font-weight="600" font-family="'Geist', system-ui, sans-serif">Root Files</text>
+        <text x="612" y="108" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">5 files</text>
+        <line x1="72" y1="120" x2="612" y2="120" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="76" y="142" fill="#101820" font-size="12.5" font-weight="600" font-family="'Geist Mono', ui-monospace, monospace">SKILL.md</text>
+        <text x="612" y="142" fill="#00263a" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Persona, Pre-Draft Gate, routing matrix, Red-Pen</text>
+
+        <text x="76" y="164" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">README.md</text>
+        <text x="612" y="164" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Antigravity &amp; Claude Code install, CLI examples</text>
+
+        <text x="76" y="186" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">requirements.txt</text>
+        <text x="612" y="186" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">python-docx, python-pptx, pypdf (lxml &amp; Pillow)</text>
+
+        <text x="76" y="208" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">.gitignore</text>
+        <text x="612" y="208" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Python caches, generated outputs, local seals</text>
+
+        <text x="76" y="230" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">.diagram-design</text>
+        <text x="612" y="230" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Binds ussf visual profile for project diagrams</text>
+
+        <!-- ==================== BRANCH 2: docs/ ==================== -->
+        <rect x="60" y="256" width="564" height="88" rx="6" fill="#f2f5f8"/>
+        <rect x="60" y="256" width="564" height="88" rx="6" fill="#ffffff" stroke="#101820" stroke-width="1"/>
+        <rect x="72" y="264" width="32" height="16" rx="2" fill="transparent" stroke="rgba(16,24,32,0.40)" stroke-width="0.8"/>
+        <text x="88" y="275" fill="#101820" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">DIR</text>
+        <text x="112" y="277" fill="#101820" font-size="14" font-weight="600" font-family="'Geist', system-ui, sans-serif">docs/</text>
+        <text x="612" y="276" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">2 architecture diagrams</text>
+        <line x1="72" y1="288" x2="612" y2="288" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="76" y="310" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">file-architecture.svg</text>
+        <text x="612" y="310" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Standalone vector embedded in README.md</text>
+
+        <text x="76" y="332" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">file-architecture.html</text>
+        <text x="612" y="332" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Source HTML diagram (ussf skin)</text>
+
+        <!-- ==================== BRANCH 3: references/ ==================== -->
+        <rect x="60" y="360" width="564" height="236" rx="6" fill="#f2f5f8"/>
+        <rect x="60" y="360" width="564" height="236" rx="6" fill="#ffffff" stroke="#101820" stroke-width="1"/>
+        <rect x="72" y="368" width="32" height="16" rx="2" fill="transparent" stroke="rgba(16,24,32,0.40)" stroke-width="0.8"/>
+        <text x="88" y="379" fill="#101820" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">DIR</text>
+        <text x="112" y="381" fill="#101820" font-size="14" font-weight="600" font-family="'Geist', system-ui, sans-serif">references/</text>
+        <text x="612" y="380" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">9 guides · Ch. 1–28</text>
+        <line x1="72" y1="392" x2="612" y2="392" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="76" y="412" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">communication-process.md</text>
+        <text x="612" y="412" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 1–9 · FOCUS, 7 Steps, fallacies</text>
+
+        <text x="76" y="434" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">briefings-speaking-and-meetings.md</text>
+        <text x="612" y="434" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 10, 11, 13 · 7×7 slides, mtgs</text>
+
+        <text x="76" y="456" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">official-memorandum.md</text>
+        <text x="612" y="456" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 13, 14, 23 · Memos, presets, Pubs</text>
+
+        <text x="76" y="478" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">staff-papers.md</text>
+        <text x="612" y="478" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 16, 17, 19 · BBP, Position, Study</text>
+
+        <text x="76" y="500" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">staff-packages-and-email.md</text>
+        <text x="612" y="500" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 12, 18 · SSS/eSSS, E-mail, IM</text>
+
+        <text x="76" y="522" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">official-biography.md</text>
+        <text x="612" y="522" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 20 · Arial 9/13.5 AP, OPSEC</text>
+
+        <text x="76" y="544" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">personal-letter.md</text>
+        <text x="612" y="544" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 15, 22 · Letter &amp; USPS Envelopes</text>
+
+        <text x="76" y="566" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">resume-and-cover-letter.md</text>
+        <text x="612" y="566" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 21 · 4 résumés, USAJOBS, cover</text>
+
+        <text x="76" y="588" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">mechanics-and-style.md</text>
+        <text x="612" y="588" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 24–28 · Modern DAF/DoW &amp; CUI</text>
+
+        <!-- ==================== SUB-BRANCH 3a: references/data/ ==================== -->
+        <rect x="104" y="612" width="520" height="124" rx="6" fill="#f2f5f8"/>
+        <rect x="104" y="612" width="520" height="124" rx="6" fill="rgba(16,24,32,0.05)" stroke="#00263a" stroke-width="1"/>
+        <rect x="116" y="620" width="36" height="16" rx="2" fill="transparent" stroke="rgba(0,38,58,0.45)" stroke-width="0.8"/>
+        <text x="134" y="631" fill="#00263a" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">DATA</text>
+        <text x="160" y="633" fill="#101820" font-size="13.5" font-weight="600" font-family="'Geist', system-ui, sans-serif">references/data/</text>
+        <text x="612" y="632" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">4 JSON datasets</text>
+        <line x1="116" y1="644" x2="612" y2="644" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="120" y="664" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">afpc_acronyms.json</text>
+        <text x="612" y="664" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">AFPC baseline (148) + abbrevs + collisions</text>
+
+        <text x="120" y="686" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">ranks.json</text>
+        <text x="612" y="686" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">USAF, USSF, USAF Warrant Officers, Joint</text>
+
+        <text x="120" y="708" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">forms_of_address.json</text>
+        <text x="612" y="708" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ch. 15 pp. 195–211 + DoW / DoD titles</text>
+
+        <text x="120" y="730" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">style_rules.json</text>
+        <text x="612" y="730" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Wordiness, AI buzzwords, fallacies, CUI</text>
+
+        <!-- ==================== BRANCH 4: scripts/ ==================== -->
+        <rect x="60" y="752" width="564" height="196" rx="6" fill="#f2f5f8"/>
+        <rect x="60" y="752" width="564" height="196" rx="6" fill="#ffffff" stroke="#101820" stroke-width="1"/>
+        <rect x="72" y="760" width="32" height="16" rx="2" fill="transparent" stroke="rgba(16,24,32,0.40)" stroke-width="0.8"/>
+        <text x="88" y="771" fill="#101820" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">DIR</text>
+        <text x="112" y="773" fill="#101820" font-size="14" font-weight="600" font-family="'Geist', system-ui, sans-serif">scripts/</text>
+        <text x="612" y="772" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">7 Python CLIs</text>
+        <line x1="72" y1="784" x2="612" y2="784" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="76" y="804" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">tq_common.py</text>
+        <text x="612" y="804" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Shared loaders, CUI helpers, style-config</text>
+
+        <text x="76" y="826" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">build_doc.py</text>
+        <text x="612" y="826" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">.docx, package bundler, presets, init-style</text>
+
+        <text x="76" y="848" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">build_slides.py</text>
+        <text x="612" y="848" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">.pptx Ch. 10 7×7 builder &amp; schema CLI</text>
+
+        <text x="76" y="870" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">validate_doc.py</text>
+        <text x="612" y="870" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">3-fmt linter, --dump-text, de-AI, PII/CUI</text>
+
+        <text x="76" y="892" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">validate_memo.py</text>
+        <text x="612" y="892" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Thin CLI shim (--type memo)</text>
+
+        <text x="76" y="914" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">import_acronyms.py</text>
+        <text x="612" y="914" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Command-guide PDF/DOCX/CSV importer</text>
+
+        <text x="76" y="936" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">tq_lookup.py</text>
+        <text x="612" y="936" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Lookup (rank, address, acronym, abbrev, CUI)</text>
+
+        <!-- ==================== BRANCH 5: templates/ ==================== -->
+        <rect x="60" y="964" width="564" height="64" rx="6" fill="#f2f5f8"/>
+        <rect x="60" y="964" width="564" height="64" rx="6" fill="#ffffff" stroke="#101820" stroke-width="1"/>
+        <rect x="72" y="972" width="32" height="16" rx="2" fill="transparent" stroke="rgba(16,24,32,0.40)" stroke-width="0.8"/>
+        <text x="88" y="983" fill="#101820" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">DIR</text>
+        <text x="112" y="985" fill="#101820" font-size="14" font-weight="600" font-family="'Geist', system-ui, sans-serif">templates/</text>
+        <text x="612" y="984" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">1 tracked file</text>
+        <line x1="72" y1="996" x2="612" y2="996" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="76" y="1016" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">README.md</text>
+        <text x="612" y="1016" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Drop-in guide for seals &amp; CAC portal forms</text>
+
+        <!-- ==================== SUB-BRANCH 5a: templates/seals/ ==================== -->
+        <rect x="104" y="1040" width="520" height="64" rx="6" fill="#f2f5f8"/>
+        <rect x="104" y="1040" width="520" height="64" rx="6" fill="rgba(16,24,32,0.02)" stroke="rgba(16,24,32,0.30)" stroke-width="1" stroke-dasharray="4,3"/>
+        <rect x="116" y="1048" width="44" height="16" rx="2" fill="transparent" stroke="rgba(86,99,110,0.45)" stroke-width="0.8"/>
+        <text x="138" y="1059" fill="#56636e" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">LOCAL</text>
+        <text x="168" y="1061" fill="#101820" font-size="13.5" font-weight="600" font-family="'Geist', system-ui, sans-serif">templates/seals/</text>
+        <text x="612" y="1060" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">optional · gitignored</text>
+        <line x1="116" y1="1072" x2="612" y2="1072" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="120" y="1092" fill="#56636e" font-size="11" font-family="'Geist Mono', ui-monospace, monospace">dow-seal.png · dod-seal.png · daf-seal.png · ussf-seal.png</text>
+        <text x="612" y="1092" fill="#56636e" font-size="10.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">via --seal</text>
+
+        <!-- ==================== BRANCH 6: tests/ ==================== -->
+        <rect x="60" y="1120" width="564" height="152" rx="6" fill="#f2f5f8"/>
+        <rect x="60" y="1120" width="564" height="152" rx="6" fill="#ffffff" stroke="#101820" stroke-width="1"/>
+        <rect x="72" y="1128" width="32" height="16" rx="2" fill="transparent" stroke="rgba(16,24,32,0.40)" stroke-width="0.8"/>
+        <text x="88" y="1139" fill="#101820" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              text-anchor="middle" letter-spacing="0.08em">DIR</text>
+        <text x="112" y="1141" fill="#101820" font-size="14" font-weight="600" font-family="'Geist', system-ui, sans-serif">tests/</text>
+        <text x="612" y="1140" fill="#56636e" font-size="10.5" font-family="'Geist Mono', ui-monospace, monospace" text-anchor="end">5 unittest suites</text>
+        <line x1="72" y1="1152" x2="612" y2="1152" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+
+        <text x="76" y="1172" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">test_validate_doc.py</text>
+        <text x="612" y="1172" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">3-fmt, CUI/PII, atch/acronym sync, de-AI</text>
+
+        <text x="76" y="1194" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">test_build_doc.py</text>
+        <text x="612" y="1194" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">.docx geometry, package, presets, eSSS</text>
+
+        <text x="76" y="1216" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">test_build_slides.py</text>
+        <text x="612" y="1216" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">.pptx 16:9, 40/30/24pt, 4×7, CUI</text>
+
+        <text x="76" y="1238" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">test_import_acronyms.py</text>
+        <text x="612" y="1238" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">PDF/CSV/TXT parse, split, collision detection</text>
+
+        <text x="76" y="1260" fill="#101820" font-size="12.5" font-family="'Geist Mono', ui-monospace, monospace">test_tq_lookup.py</text>
+        <text x="612" y="1260" fill="#56636e" font-size="11.5" font-family="'Geist', system-ui, sans-serif" text-anchor="end">Ranks, DoW/DoD, acronyms, abbrevs, CUI</text>
+
+        <!-- ==================== LEGEND STRIP ==================== -->
+        <line x1="16" y1="1288" x2="624" y2="1288" stroke="rgba(16,24,32,0.12)" stroke-width="0.8"/>
+        <text x="16" y="1308" fill="#00263a" font-size="8.5" font-family="'Geist Mono', ui-monospace, monospace"
+              letter-spacing="0.16em">LEGEND</text>
+
+        <rect x="80" y="1300" width="16" height="8" rx="2" fill="rgba(0,48,143,0.08)" stroke="#00308f" stroke-width="1"/>
+        <text x="102" y="1308" fill="#00263a" font-size="10.5" font-family="'Geist', system-ui, sans-serif">Repo root</text>
+
+        <rect x="184" y="1300" width="16" height="8" rx="2" fill="#ffffff" stroke="#101820" stroke-width="1"/>
+        <text x="206" y="1308" fill="#00263a" font-size="10.5" font-family="'Geist', system-ui, sans-serif">Tracked dir</text>
+
+        <rect x="296" y="1300" width="16" height="8" rx="2" fill="rgba(16,24,32,0.05)" stroke="#00263a" stroke-width="1"/>
+        <text x="318" y="1308" fill="#00263a" font-size="10.5" font-family="'Geist', system-ui, sans-serif">JSON data</text>
+
+        <rect x="404" y="1300" width="16" height="8" rx="2" fill="rgba(16,24,32,0.02)" stroke="rgba(16,24,32,0.30)" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="426" y="1308" fill="#00263a" font-size="10.5" font-family="'Geist', system-ui, sans-serif">Optional local drop-in</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

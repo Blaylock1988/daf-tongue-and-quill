@@ -1,0 +1,173 @@
+{
+  "source": "AFH 33-337 Ch. 15 (pp. 212-213) plus authoritative modern USSF enlisted ranks (spaceforce.mil) and 2024 USAF Warrant Officer reintroduction (af.mil).",
+  "notes": [
+    "In Personal Letter address blocks and formal correspondence salutations where full rank is required, spell out ranks completely (Lt Col Grant becomes Lieutenant Colonel Grant).",
+    "Never mix abbreviated and spelled-out words in a rank (use Lt Col or Lieutenant Colonel, never Lt Colonel or Lieutenant Col).",
+    "When addressing Colonels and General Officers in Official Memorandum signature blocks, AFH 33-337 states Colonel and General Officer ranks are normally spelled out."
+  ],
+  "services": {
+    "USAF": {
+      "officers": [
+        {"grade": "O-10", "title": "General", "abbrev": "Gen", "salutation": "General"},
+        {"grade": "O-9", "title": "Lieutenant General", "abbrev": "Lt Gen", "salutation": "General"},
+        {"grade": "O-8", "title": "Major General", "abbrev": "Maj Gen", "salutation": "General"},
+        {"grade": "O-7", "title": "Brigadier General", "abbrev": "Brig Gen", "salutation": "General"},
+        {"grade": "O-6", "title": "Colonel", "abbrev": "Col", "salutation": "Colonel"},
+        {"grade": "O-5", "title": "Lieutenant Colonel", "abbrev": "Lt Col", "salutation": "Colonel"},
+        {"grade": "O-4", "title": "Major", "abbrev": "Maj", "salutation": "Major"},
+        {"grade": "O-3", "title": "Captain", "abbrev": "Capt", "salutation": "Captain"},
+        {"grade": "O-2", "title": "First Lieutenant", "abbrev": "1st Lt", "salutation": "Lieutenant"},
+        {"grade": "O-1", "title": "Second Lieutenant", "abbrev": "2d Lt", "salutation": "Lieutenant"}
+      ],
+      "warrant_officers": [
+        {"grade": "W-5", "title": "Chief Warrant Officer 5", "abbrev": "CW5", "alt_abbrev": "CWO5", "salutation": "Chief Warrant Officer", "spoken": "Chief / Sir / Ma'am", "modern_update": "Reintroduced in 2024 for IT/Cyber (Ch. 15 table in 2015 PDF left USAF W-1..W-5 blank; verify local DAFGM/myFSS for CW2 vs. CWO2)."},
+        {"grade": "W-4", "title": "Chief Warrant Officer 4", "abbrev": "CW4", "alt_abbrev": "CWO4", "salutation": "Chief Warrant Officer", "spoken": "Chief / Sir / Ma'am", "modern_update": "2024 DAF Warrant Officer Policy"},
+        {"grade": "W-3", "title": "Chief Warrant Officer 3", "abbrev": "CW3", "alt_abbrev": "CWO3", "salutation": "Chief Warrant Officer", "spoken": "Chief / Sir / Ma'am", "modern_update": "2024 DAF Warrant Officer Policy"},
+        {"grade": "W-2", "title": "Chief Warrant Officer 2", "abbrev": "CW2", "alt_abbrev": "CWO2", "salutation": "Chief Warrant Officer", "spoken": "Chief / Sir / Ma'am", "modern_update": "2024 DAF Warrant Officer Policy"},
+        {"grade": "W-1", "title": "Warrant Officer 1", "abbrev": "WO1", "alt_abbrev": "WO1", "salutation": "Warrant Officer", "spoken": "Warrant Officer / Sir / Ma'am", "modern_update": "2024 DAF Warrant Officer Policy"}
+      ],
+      "enlisted": [
+        {"grade": "E-9", "title": "Chief Master Sergeant of the Air Force", "abbrev": "CMSAF", "salutation": "Chief"},
+        {"grade": "E-9", "title": "Chief Master Sergeant", "abbrev": "CMSgt", "salutation": "Chief"},
+        {"grade": "E-8", "title": "Senior Master Sergeant", "abbrev": "SMSgt", "salutation": "Sergeant"},
+        {"grade": "E-7", "title": "Master Sergeant", "abbrev": "MSgt", "salutation": "Sergeant"},
+        {"grade": "E-6", "title": "Technical Sergeant", "abbrev": "TSgt", "salutation": "Sergeant"},
+        {"grade": "E-5", "title": "Staff Sergeant", "abbrev": "SSgt", "salutation": "Sergeant"},
+        {"grade": "E-4", "title": "Senior Airman", "abbrev": "SrA", "salutation": "Airman"},
+        {"grade": "E-3", "title": "Airman First Class", "abbrev": "A1C", "salutation": "Airman"},
+        {"grade": "E-2", "title": "Airman", "abbrev": "Amn", "salutation": "Airman"},
+        {"grade": "E-1", "title": "Airman Basic", "abbrev": "AB", "salutation": "Airman"}
+      ]
+    },
+    "USSF": {
+      "officers": [
+        {"grade": "O-10", "title": "General", "abbrev": "Gen", "salutation": "General"},
+        {"grade": "O-9", "title": "Lieutenant General", "abbrev": "Lt Gen", "salutation": "General"},
+        {"grade": "O-8", "title": "Major General", "abbrev": "Maj Gen", "salutation": "General"},
+        {"grade": "O-7", "title": "Brigadier General", "abbrev": "Brig Gen", "salutation": "General"},
+        {"grade": "O-6", "title": "Colonel", "abbrev": "Col", "salutation": "Colonel"},
+        {"grade": "O-5", "title": "Lieutenant Colonel", "abbrev": "Lt Col", "salutation": "Colonel"},
+        {"grade": "O-4", "title": "Major", "abbrev": "Maj", "salutation": "Major"},
+        {"grade": "O-3", "title": "Captain", "abbrev": "Capt", "salutation": "Captain"},
+        {"grade": "O-2", "title": "First Lieutenant", "abbrev": "1st Lt", "salutation": "Lieutenant"},
+        {"grade": "O-1", "title": "Second Lieutenant", "abbrev": "2d Lt", "salutation": "Lieutenant"}
+      ],
+      "enlisted": [
+        {"grade": "E-9", "title": "Chief Master Sergeant of the Space Force", "abbrev": "CMSSF", "salutation": "Chief", "modern_update": "USSF rank structure (post-2015 T&Q)"},
+        {"grade": "E-9", "title": "Chief Master Sergeant", "abbrev": "CMSgt", "salutation": "Chief", "modern_update": "USSF rank structure"},
+        {"grade": "E-8", "title": "Senior Master Sergeant", "abbrev": "SMSgt", "salutation": "Sergeant", "modern_update": "USSF rank structure"},
+        {"grade": "E-7", "title": "Master Sergeant", "abbrev": "MSgt", "salutation": "Sergeant", "modern_update": "USSF rank structure"},
+        {"grade": "E-6", "title": "Technical Sergeant", "abbrev": "TSgt", "salutation": "Sergeant", "modern_update": "USSF rank structure"},
+        {"grade": "E-5", "title": "Sergeant", "abbrev": "Sgt", "salutation": "Sergeant", "modern_update": "USSF E-5 is Sergeant (Sgt), not Staff Sergeant"},
+        {"grade": "E-4", "title": "Specialist 4", "abbrev": "Spc4", "salutation": "Specialist", "modern_update": "USSF Specialist tier"},
+        {"grade": "E-3", "title": "Specialist 3", "abbrev": "Spc3", "salutation": "Specialist", "modern_update": "USSF Specialist tier"},
+        {"grade": "E-2", "title": "Specialist 2", "abbrev": "Spc2", "salutation": "Specialist", "modern_update": "USSF Specialist tier"},
+        {"grade": "E-1", "title": "Specialist 1", "abbrev": "Spc1", "salutation": "Specialist", "modern_update": "USSF Specialist tier"}
+      ]
+    },
+    "USA": {
+      "officers": [
+        {"grade": "O-10", "title": "General", "abbrev": "GEN", "salutation": "General"},
+        {"grade": "O-9", "title": "Lieutenant General", "abbrev": "LTG", "salutation": "General"},
+        {"grade": "O-8", "title": "Major General", "abbrev": "MG", "salutation": "General"},
+        {"grade": "O-7", "title": "Brigadier General", "abbrev": "BG", "salutation": "General"},
+        {"grade": "O-6", "title": "Colonel", "abbrev": "COL", "salutation": "Colonel"},
+        {"grade": "O-5", "title": "Lieutenant Colonel", "abbrev": "LTC", "salutation": "Colonel"},
+        {"grade": "O-4", "title": "Major", "abbrev": "MAJ", "salutation": "Major"},
+        {"grade": "O-3", "title": "Captain", "abbrev": "CPT", "salutation": "Captain"},
+        {"grade": "O-2", "title": "First Lieutenant", "abbrev": "1LT", "salutation": "Lieutenant"},
+        {"grade": "O-1", "title": "Second Lieutenant", "abbrev": "2LT", "salutation": "Lieutenant"}
+      ],
+      "warrant_officers": [
+        {"grade": "W-5", "title": "Chief Warrant Officer 5", "abbrev": "CW5", "salutation": "Mr./Ms."},
+        {"grade": "W-4", "title": "Chief Warrant Officer 4", "abbrev": "CW4", "salutation": "Mr./Ms."},
+        {"grade": "W-3", "title": "Chief Warrant Officer 3", "abbrev": "CW3", "salutation": "Mr./Ms."},
+        {"grade": "W-2", "title": "Chief Warrant Officer 2", "abbrev": "CW2", "salutation": "Mr./Ms."},
+        {"grade": "W-1", "title": "Warrant Officer 1", "abbrev": "WO1", "salutation": "Mr./Ms."}
+      ],
+      "enlisted": [
+        {"grade": "E-9", "title": "Sergeant Major of the Army", "abbrev": "SMA", "salutation": "Sergeant Major"},
+        {"grade": "E-9", "title": "Command Sergeant Major", "abbrev": "CSM", "salutation": "Sergeant Major"},
+        {"grade": "E-9", "title": "Sergeant Major", "abbrev": "SGM", "salutation": "Sergeant Major"},
+        {"grade": "E-8", "title": "First Sergeant", "abbrev": "1SG", "salutation": "First Sergeant"},
+        {"grade": "E-8", "title": "Master Sergeant", "abbrev": "MSG", "salutation": "Sergeant"},
+        {"grade": "E-7", "title": "Sergeant First Class", "abbrev": "SFC", "salutation": "Sergeant"},
+        {"grade": "E-6", "title": "Staff Sergeant", "abbrev": "SSG", "salutation": "Sergeant"},
+        {"grade": "E-5", "title": "Sergeant", "abbrev": "SGT", "salutation": "Sergeant"},
+        {"grade": "E-4", "title": "Corporal", "abbrev": "CPL", "salutation": "Corporal"},
+        {"grade": "E-4", "title": "Specialist", "abbrev": "SPC", "salutation": "Specialist"},
+        {"grade": "E-3", "title": "Private First Class", "abbrev": "PFC", "salutation": "Private"},
+        {"grade": "E-2", "title": "Private", "abbrev": "PV2", "salutation": "Private"},
+        {"grade": "E-1", "title": "Private", "abbrev": "PVT", "salutation": "Private"}
+      ]
+    },
+    "USN": {
+      "officers": [
+        {"grade": "O-10", "title": "Admiral", "abbrev": "ADM", "salutation": "Admiral"},
+        {"grade": "O-9", "title": "Vice Admiral", "abbrev": "VADM", "salutation": "Admiral"},
+        {"grade": "O-8", "title": "Rear Admiral", "abbrev": "RADM", "salutation": "Admiral"},
+        {"grade": "O-7", "title": "Rear Admiral (lower half)", "abbrev": "RDML", "salutation": "Admiral"},
+        {"grade": "O-6", "title": "Captain", "abbrev": "CAPT", "salutation": "Captain"},
+        {"grade": "O-5", "title": "Commander", "abbrev": "CDR", "salutation": "Commander"},
+        {"grade": "O-4", "title": "Lieutenant Commander", "abbrev": "LCDR", "salutation": "Commander"},
+        {"grade": "O-3", "title": "Lieutenant", "abbrev": "LT", "salutation": "Lieutenant"},
+        {"grade": "O-2", "title": "Lieutenant (Junior Grade)", "abbrev": "LTJG", "salutation": "Lieutenant"},
+        {"grade": "O-1", "title": "Ensign", "abbrev": "ENS", "salutation": "Ensign"}
+      ],
+      "warrant_officers": [
+        {"grade": "W-5", "title": "Chief Warrant Officer 5", "abbrev": "CWO5", "salutation": "Chief Warrant Officer"},
+        {"grade": "W-4", "title": "Chief Warrant Officer 4", "abbrev": "CWO4", "salutation": "Chief Warrant Officer"},
+        {"grade": "W-3", "title": "Chief Warrant Officer 3", "abbrev": "CWO3", "salutation": "Chief Warrant Officer"},
+        {"grade": "W-2", "title": "Chief Warrant Officer 2", "abbrev": "CWO2", "salutation": "Chief Warrant Officer"},
+        {"grade": "W-1", "title": "Warrant Officer 1", "abbrev": "WO1", "salutation": "Warrant Officer"}
+      ],
+      "enlisted": [
+        {"grade": "E-9", "title": "Master Chief Petty Officer of the Navy", "abbrev": "MCPON", "salutation": "Master Chief"},
+        {"grade": "E-9", "title": "Master Chief Petty Officer", "abbrev": "MCPO", "salutation": "Master Chief"},
+        {"grade": "E-8", "title": "Senior Chief Petty Officer", "abbrev": "SCPO", "salutation": "Senior Chief"},
+        {"grade": "E-7", "title": "Chief Petty Officer", "abbrev": "CPO", "salutation": "Chief"},
+        {"grade": "E-6", "title": "Petty Officer First Class", "abbrev": "PO1", "salutation": "Petty Officer"},
+        {"grade": "E-5", "title": "Petty Officer Second Class", "abbrev": "PO2", "salutation": "Petty Officer"},
+        {"grade": "E-4", "title": "Petty Officer Third Class", "abbrev": "PO3", "salutation": "Petty Officer"},
+        {"grade": "E-3", "title": "Seaman / Airman / Fireman", "abbrev": "SN", "salutation": "Seaman"},
+        {"grade": "E-2", "title": "Seaman Apprentice", "abbrev": "SA", "salutation": "Seaman"},
+        {"grade": "E-1", "title": "Seaman Recruit", "abbrev": "SR", "salutation": "Seaman"}
+      ]
+    },
+    "USMC": {
+      "officers": [
+        {"grade": "O-10", "title": "General", "abbrev": "Gen", "salutation": "General"},
+        {"grade": "O-9", "title": "Lieutenant General", "abbrev": "LtGen", "salutation": "General"},
+        {"grade": "O-8", "title": "Major General", "abbrev": "MajGen", "salutation": "General"},
+        {"grade": "O-7", "title": "Brigadier General", "abbrev": "BGen", "salutation": "General"},
+        {"grade": "O-6", "title": "Colonel", "abbrev": "Col", "salutation": "Colonel"},
+        {"grade": "O-5", "title": "Lieutenant Colonel", "abbrev": "LtCol", "salutation": "Colonel"},
+        {"grade": "O-4", "title": "Major", "abbrev": "Maj", "salutation": "Major"},
+        {"grade": "O-3", "title": "Captain", "abbrev": "Capt", "salutation": "Captain"},
+        {"grade": "O-2", "title": "First Lieutenant", "abbrev": "1stLt", "salutation": "Lieutenant"},
+        {"grade": "O-1", "title": "Second Lieutenant", "abbrev": "2ndLt", "salutation": "Lieutenant"}
+      ],
+      "warrant_officers": [
+        {"grade": "W-5", "title": "Chief Warrant Officer 5", "abbrev": "CWO-5", "salutation": "Mr./Ms."},
+        {"grade": "W-4", "title": "Chief Warrant Officer 4", "abbrev": "CWO-4", "salutation": "Mr./Ms."},
+        {"grade": "W-3", "title": "Chief Warrant Officer 3", "abbrev": "CWO-3", "salutation": "Mr./Ms."},
+        {"grade": "W-2", "title": "Chief Warrant Officer 2", "abbrev": "CWO-2", "salutation": "Mr./Ms."},
+        {"grade": "W-1", "title": "Warrant Officer 1", "abbrev": "CWO-1", "salutation": "Mr./Ms."}
+      ],
+      "enlisted": [
+        {"grade": "E-9", "title": "Sergeant Major of the Marine Corps", "abbrev": "SgtMajMC", "salutation": "Sergeant Major"},
+        {"grade": "E-9", "title": "Sergeant Major", "abbrev": "SgtMaj", "salutation": "Sergeant Major"},
+        {"grade": "E-9", "title": "Master Gunnery Sergeant", "abbrev": "MGySgt", "salutation": "Master Gunnery Sergeant"},
+        {"grade": "E-8", "title": "First Sergeant", "abbrev": "1stSgt", "salutation": "First Sergeant"},
+        {"grade": "E-8", "title": "Master Sergeant", "abbrev": "MSgt", "salutation": "Master Sergeant"},
+        {"grade": "E-7", "title": "Gunnery Sergeant", "abbrev": "GySgt", "salutation": "Gunnery Sergeant"},
+        {"grade": "E-6", "title": "Staff Sergeant", "abbrev": "SSgt", "salutation": "Staff Sergeant"},
+        {"grade": "E-5", "title": "Sergeant", "abbrev": "Sgt", "salutation": "Sergeant"},
+        {"grade": "E-4", "title": "Corporal", "abbrev": "Cpl", "salutation": "Corporal"},
+        {"grade": "E-3", "title": "Lance Corporal", "abbrev": "LCpl", "salutation": "Corporal"},
+        {"grade": "E-2", "title": "Private First Class", "abbrev": "PFC", "salutation": "Private First Class"},
+        {"grade": "E-1", "title": "Private", "abbrev": "Pvt", "salutation": "Private"}
+      ]
+    }
+  }
+}

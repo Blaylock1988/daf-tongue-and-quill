@@ -1,0 +1,34 @@
+# Python caches & build outputs
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Generated drafts & local test deliverables
+*.docx
+*.pptx
+!templates/examples/*.docx
+!templates/examples/*.pptx
+out/
+tmp/
+
+# Local drop-in official seals & CAC-downloaded portal templates (legally protected / local only)
+templates/seals/*.png
+templates/seals/*.jpg
+templates/seals/*.svg
+templates/portal/
+
+# Local unit style configs & command acronym imports (keep unit-specific data local)
+unit_style.json
+local_acronyms.json
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
