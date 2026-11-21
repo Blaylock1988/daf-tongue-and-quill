@@ -19,7 +19,7 @@ pip install -r requirements.txt
 Clone or sync the repository root into your global skills directory:
 
 ```pwsh
-git clone --branch main "c:\Users\blayl\source\repos\daf-tongue&quill-agent" "$env:USERPROFILE\.agents\skills\daf-tongue-and-quill"
+git clone --branch main "https://github.com/Blaylock1988/daf-tongue-and-quill.git" "$env:USERPROFILE\.agents\skills\daf-tongue-and-quill"
 ```
 
 ## Quick CLI Examples
