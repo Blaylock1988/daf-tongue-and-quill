@@ -17,10 +17,7 @@ build/
 out/
 tmp/
 
-# Local drop-in official seals & CAC-downloaded portal templates (legally protected / local only)
-templates/seals/*.png
-templates/seals/*.jpg
-templates/seals/*.svg
+# Local CAC-downloaded portal templates (portal-gated / local only)
 templates/portal/
 
 # Local unit style configs & command acronym imports (keep unit-specific data local)

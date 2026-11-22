@@ -944,7 +944,8 @@ def build_document(
     if resolved_dept == "ask":
         resolved_dept = "dod"
     resolved_service = str(spec.get("service", style_cfg.service)).upper()
-    seal = resolve_seal(seal_arg or spec.get("seal") or style_cfg.seal_path, resolved_dept, resolved_service)
+    seal_choice = seal_arg or spec.get("seal") or style_cfg.seal_path or "auto"
+    seal = resolve_seal(seal_choice, resolved_dept, resolved_service, context="doc")
 
     use_cui = bool(cui or spec.get("cui"))
     cui_cat = cui_category or spec.get("cui_category") or style_cfg.cui_default_category
@@ -1263,7 +1264,7 @@ def build_staff_package(
 def _add_common_flags(parser: argparse.ArgumentParser) -> None:
     """Attach shared department, seal, CUI, and style-config flags."""
     parser.add_argument("--dept", choices=("dow", "dod"), help="Department of War (DoW) or Defense (DoD)")
-    parser.add_argument("--seal", help="Explicit seal image path or 'auto'")
+    parser.add_argument("--seal", help="Seal variant (auto|blue|bw|color|none) or explicit PNG path")
     parser.add_argument("--photo", help="Official portrait path for Official Biography")
     parser.add_argument("--cui", action="store_true", help="Include DoDI 5200.48 CUI banners and DI block")
     parser.add_argument("--cui-category", default="", help="CUI Category codes (e.g. CTI or CTI/EXPT)")

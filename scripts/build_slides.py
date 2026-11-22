@@ -323,10 +323,12 @@ def build_deck(
         if use_cui
         else None
     )
+    seal_choice = seal_arg or spec.get("seal") or style_cfg.seal_path or "auto"
     seal_path = resolve_seal(
-        seal_arg or spec.get("seal") or style_cfg.seal_path,
+        seal_choice,
         resolved_dept,
         resolved_service,
+        context="slides",
     )
 
     prs = Presentation()
@@ -475,7 +477,7 @@ def main(argv: list[str] | None = None) -> int:
     def add_flags(p: argparse.ArgumentParser) -> None:
         p.add_argument("--palette", choices=tuple(PALETTES.keys()))
         p.add_argument("--dept", choices=("dow", "dod"))
-        p.add_argument("--seal", help="Explicit seal PNG path or 'auto'")
+        p.add_argument("--seal", help="Seal variant (auto|blue|bw|color|none) or explicit PNG path")
         p.add_argument("--cui", action="store_true")
         p.add_argument("--cui-category", default="")
         p.add_argument("--cui-ldc", default="")

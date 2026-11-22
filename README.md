@@ -50,15 +50,25 @@ python scripts/tq_lookup.py --acronym OPR
 python scripts/tq_lookup.py --rank Spc3
 ```
 
-## Local Seals & Unit Style Profile (`--style-config`)
+## Bundled Seals & Unit Style Profile (`--style-config`)
 
-Generate a unit profile so every draft inherits your commander's preferences automatically:
+All three official Department of War (`DOW`) PNG seals from the [war.gov Brand Guide](https://www.war.gov/Brand-Guide/#DOW-seal) are bundled directly under `templates/seals/`:
+
+- `dow-seal-blue.png` — default (`--seal auto`) for Word `.docx` memorandums/letters (per **AFMAN 33-326** ultramarine blue / black letterhead ink standards).
+- `dow-seal-bw.png` — Black & White monochrome variant (`--seal bw`).
+- `dow-seal-color.png` — Full Color variant, default (`--seal auto`) for `.pptx` briefing slides (`--seal color` also works for `.docx`).
+
+Override per run with `--seal auto|blue|bw|color|none|<path>`, or generate a unit profile so every draft inherits your commander's preferences automatically:
 
 ```pwsh
 python scripts/build_doc.py init-style unit_style.json --dept dow --service USSF
 ```
 
-See [templates/README.md](templates/README.md) for placing local `dow-seal.png`, `dod-seal.png`, `daf-seal.png`, or `ussf-seal.png` assets under `templates/seals/` (`.gitignore`d).
+See [templates/README.md](templates/README.md) for optional `dod-seal.png`, `daf-seal.png`, `ussf-seal.png`, and CAC-gated AF Portal template placement.
+
+## Disclaimer
+
+This open-source skill package is an independent tool and is **not** affiliated with, funded by, or officially endorsed by the Department of War (`DoW`), Department of Defense (`DoD`), Department of the Air Force (`DAF`), or the U.S. Government. Bundled official DoW seals are included solely to support authorized personnel preparing official communications and briefings; they remain governed by **10 U.S.C. § 2260**, **18 U.S.C. § 506**, and the DoW Brand Guide and may **not** be used commercially or in any manner that implies official endorsement.
 
 ## Running Automated Tests
 

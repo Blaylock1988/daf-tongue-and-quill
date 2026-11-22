@@ -14,6 +14,7 @@ if str(SCRIPTS_DIR) not in sys.path:
 import docx
 from docx.shared import Inches
 import build_doc
+import tq_common
 
 
 class TestBuildDoc(unittest.TestCase):
@@ -39,9 +40,19 @@ class TestBuildDoc(unittest.TestCase):
             self.assertAlmostEqual(sec.left_margin.inches, 1.0, places=2)
             self.assertTrue(sec.different_first_page_header_footer)
 
-            hdr1_text = "\n".join(p.text for p in sec.first_page_header.paragraphs)
+            hdr1_parts = [p.text for p in sec.first_page_header.paragraphs]
+            hdr1_parts.extend(
+                p.text
+                for tbl in sec.first_page_header.tables
+                for row in tbl.rows
+                for cell in row.cells
+                for p in cell.paragraphs
+            )
+            hdr1_text = "\n".join(hdr1_parts)
             self.assertIn("CUI//CTI/EXPT//FEDCON", hdr1_text)
             self.assertIn("DEPARTMENT OF THE AIR FORCE", hdr1_text)
+            self.assertEqual(len(sec.first_page_header.tables), 1)
+            self.assertIn("blip", sec.first_page_header.tables[0]._element.xml)
 
             ftr_text = "\n".join(p.text for p in sec.footer.paragraphs)
             self.assertIn("CUI//CTI/EXPT//FEDCON", ftr_text)
@@ -130,6 +141,21 @@ class TestBuildDoc(unittest.TestCase):
             cfg = json.loads(style_out.read_text(encoding="utf-8"))
             self.assertEqual(cfg["department_name"], "dow")
             self.assertEqual(cfg["service"], "USSF")
+
+    def test_resolve_seal_dow_variants_and_none(self) -> None:
+        self.assertEqual(
+            tq_common.resolve_seal("auto", "dow", context="doc").name,
+            "dow-seal-blue.png",
+        )
+        self.assertEqual(
+            tq_common.resolve_seal("bw", "dow").name,
+            "dow-seal-bw.png",
+        )
+        self.assertEqual(
+            tq_common.resolve_seal("auto", "dow", context="slides").name,
+            "dow-seal-color.png",
+        )
+        self.assertIsNone(tq_common.resolve_seal("none", "dow"))
 
 
 if __name__ == "__main__":

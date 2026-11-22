@@ -299,29 +299,45 @@ def resolve_seal(
     seal_arg: str | None,
     dept: str | None = None,
     service: str = "USAF",
+    *,
+    context: str = "doc",
     repo_root: Path = REPO_ROOT,
 ) -> Path | None:
-    """Resolve an explicit seal path or auto-discover from templates/seals/."""
+    """Resolve a seal variant ('auto'|'blue'|'bw'|'color'|'none') or explicit path."""
     if not seal_arg:
         return None
-    if seal_arg.strip().lower() != "auto":
+    normalized = seal_arg.strip().lower()
+    if normalized in {"none", "off"}:
+        return None
+
+    seals_dir = repo_root / "templates" / "seals"
+    if normalized in {"blue", "bw", "color"}:
+        for name in (f"dow-seal-{normalized}.png", "dow-seal.png"):
+            candidate = seals_dir / name
+            if candidate.exists():
+                return candidate
+        return None
+
+    if normalized != "auto":
         explicit = Path(seal_arg)
         if not explicit.exists():
             raise FileNotFoundError(f"Seal image not found: {explicit}")
         return explicit
 
-    seals_dir = repo_root / "templates" / "seals"
     candidates: list[str] = []
     dept_norm = (dept or "").strip().lower()
     if dept_norm == "dow":
-        candidates.append("dow-seal.png")
-    elif dept_norm == "dod":
-        candidates.append("dod-seal.png")
-    svc_norm = service.strip().lower()
-    if svc_norm == "ussf":
-        candidates.extend(["ussf-seal.png", "daf-seal.png"])
+        if context.strip().lower() == "slides":
+            candidates.extend(["dow-seal-color.png", "dow-seal-blue.png", "dow-seal-bw.png", "dow-seal.png"])
+        else:
+            candidates.extend(["dow-seal-blue.png", "dow-seal-bw.png", "dow-seal-color.png", "dow-seal.png"])
     else:
-        candidates.extend(["daf-seal.png", "dod-seal.png", "dow-seal.png"])
+        candidates.append("dod-seal.png")
+        svc_norm = service.strip().lower()
+        if svc_norm == "ussf":
+            candidates.extend(["ussf-seal.png", "daf-seal.png"])
+        else:
+            candidates.extend(["daf-seal.png", "dod-seal.png"])
 
     for name in candidates:
         candidate = seals_dir / name
