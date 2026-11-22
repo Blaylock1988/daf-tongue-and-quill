@@ -70,6 +70,10 @@ See [templates/README.md](templates/README.md) for optional `dod-seal.png`, `daf
 
 This open-source skill package is an independent tool and is **not** affiliated with, funded by, or officially endorsed by the Department of War (`DoW`), Department of Defense (`DoD`), Department of the Air Force (`DAF`), or the U.S. Government. Bundled official DoW seals are included solely to support authorized personnel preparing official communications and briefings; they remain governed by **10 U.S.C. § 2260**, **18 U.S.C. § 506**, and the DoW Brand Guide and may **not** be used commercially or in any manner that implies official endorsement.
 
+## License
+
+Original code, scripts, prompts, and documentation in this repository are licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE) (`PolyForm-Noncommercial-1.0.0`). Bundled official U.S. Government seals under `templates/seals/` are excluded from this grant and remain U.S. Government property subject to **10 U.S.C. § 2260**, **18 U.S.C. § 506**, and the DoW Brand Guide.
+
 ## Running Automated Tests
 
 ```pwsh
